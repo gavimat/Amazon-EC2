@@ -87,7 +87,7 @@ escreverMensagem() {
 		echo "O ID da mensagem é ${idMensagem}"
 
 		 # Chama func escreveMensagem no ChainCode
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
@@ -115,7 +115,7 @@ escreverMensagem() {
 		echo "O ID da mensagem é ${idMensagem}"
 
 		 # Chama func escreveMensagem no ChainCode
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
