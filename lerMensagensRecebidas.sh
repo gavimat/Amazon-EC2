@@ -61,7 +61,7 @@ lerMensagensRebidas() {
 
 		setGlobalsForPeer0Org1
 
-        /root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensDaOutraOrg", "'${nomeOrgRemetente}'"]}'
+        /home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensDaOutraOrg", "'${nomeOrgRemetente}'"]}'
             
 		
 	elif [ "$Org" -eq 2 ]; then
@@ -72,7 +72,7 @@ lerMensagensRebidas() {
 
 		setGlobalsForPeer0Org2
 
-        /root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensDaOutraOrg", "'${nomeOrgRemetente}'"]}'
+        /home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensDaOutraOrg", "'${nomeOrgRemetente}'"]}'
             
 	else 
     echo "O valor digitado está incorreto. Digite novamente."
