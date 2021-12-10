@@ -63,7 +63,7 @@ CC_NAME="fabcar"
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode package ${CC_NAME}.tar.gz \
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode package ${CC_NAME}.tar.gz \
         --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} \
         --label ${CC_NAME}_${VERSION}
     echo "===================== Chaincode is packaged on peer0.org1 ===================== "
@@ -73,19 +73,19 @@ packageChaincode() {
 
 installChaincode() {
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
     echo "===================== Chaincode is installed on peer0.org1 ===================== "
 
     setGlobalsForPeer1Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
     echo "===================== Chaincode is installed on peer1.org1 ===================== "
 
     setGlobalsForPeer0Org2
-    /root/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
     echo "===================== Chaincode is installed on peer0.org2 ===================== "
 
     setGlobalsForPeer1Org2
-    /root/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
     echo "===================== Chaincode is installed on peer1.org2 ===================== "
 }
 
@@ -93,7 +93,7 @@ installChaincode() {
 
 queryInstalled() {
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode queryinstalled >&log.txt
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode queryinstalled >&log.txt
     cat log.txt
     PACKAGE_ID=$(sed -n "/${CC_NAME}_${VERSION}/{s/^Package ID: //; s/, Label:.*$//; p;}" log.txt)
     echo PackageID is ${PACKAGE_ID}
@@ -105,7 +105,7 @@ queryInstalled() {
 approveForMyOrg1() {
     setGlobalsForPeer0Org1
     
-    /root/fabric-samples/bin/peer lifecycle chaincode approveformyorg -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode approveformyorg -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
         --init-required --package-id ${PACKAGE_ID} \
@@ -123,7 +123,7 @@ getBlock() {
     #     --ordererTLSHostnameOverride orderer.example.com --tls \
     #     --cafile $ORDERER_CA
 
-    /root/fabric-samples/bin/peer channel getinfo  -c mychannel -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer channel getinfo  -c mychannel -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com --tls \
         --cafile $ORDERER_CA
 }
@@ -132,7 +132,7 @@ getBlock() {
 
 checkCommitReadyness() {
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode checkcommitreadiness \
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode checkcommitreadiness \
         --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
         --sequence ${VERSION} --output json --init-required
     echo "===================== checking commit readyness from org 1 ===================== "
@@ -143,7 +143,7 @@ checkCommitReadyness() {
 approveForMyOrg2() {
     setGlobalsForPeer0Org2
 
-    /root/fabric-samples/bin/peer lifecycle chaincode approveformyorg -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode approveformyorg -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} \
         --version ${VERSION} --init-required --package-id ${PACKAGE_ID} \
@@ -157,7 +157,7 @@ approveForMyOrg2() {
 checkCommitReadyness() {
 
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode checkcommitreadiness \
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode checkcommitreadiness \
     --channelID $CHANNEL_NAME --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
         --name ${CC_NAME} --version ${VERSION} --sequence ${VERSION} --output json --init-required
     echo "===================== checking commit readyness from org 1 ===================== "
@@ -167,7 +167,7 @@ checkCommitReadyness() {
 
 commitChaincodeDefination() {
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         --channelID $CHANNEL_NAME --name ${CC_NAME} \
         --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
@@ -180,7 +180,7 @@ commitChaincodeDefination() {
 
 queryCommitted() {
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name ${CC_NAME}
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name ${CC_NAME}
 
 }
 
@@ -188,7 +188,7 @@ queryCommitted() {
 
 chaincodeInvokeInit() {
     setGlobalsForPeer0Org1
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         -C $CHANNEL_NAME -n ${CC_NAME} \
@@ -205,7 +205,7 @@ chaincodeInvoke() {
     setGlobalsForPeer0Org1
 
     # Init ledger
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
@@ -223,7 +223,7 @@ chaincodeQuery() {
 
     # Query all cars
     echo "Querying all:"
-    /root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryAll"]}'
+    /home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryAll"]}'
 }
 
 # chaincodeQuery
@@ -234,7 +234,7 @@ chaincodeInvoke2() {
     setGlobalsForPeer0Org1
 
     # Create Aerogerador
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
@@ -251,7 +251,7 @@ chaincodeAlterarOperador() {
     setGlobalsForPeer0Org1
 
     # Create Aerogerador
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
@@ -268,7 +268,7 @@ chaincodePegarAerogerador() {
     setGlobalsForPeer0Org1
 
     # Query Aerogerador
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
