@@ -48,7 +48,7 @@ CC_NAME="fabcar"
  
 notificacaoMensagens(){
 	setGlobalsForPeer0Org1
-	/root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["geraNotificacao"]}'
+	/home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["geraNotificacao"]}'
 }
 
 notificacaoMensagens
