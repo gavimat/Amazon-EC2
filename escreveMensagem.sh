@@ -69,7 +69,7 @@ chaincodeEscreverMensagem() {
     
     setGlobalsForPeer0Org1
     # Escreve Mensagem
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -81,7 +81,7 @@ chaincodeEscreverMensagem() {
 
     sleep 1
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -95,7 +95,7 @@ chaincodeEscreverMensagem() {
 
     setGlobalsForPeer0Org2
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -109,7 +109,7 @@ chaincodeEscreverMensagem() {
 
     setGlobalsForPeer0Org1
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -123,7 +123,7 @@ chaincodeEscreverMensagem() {
 
     setGlobalsForPeer0Org2
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -137,7 +137,7 @@ chaincodeEscreverMensagem() {
 
     setGlobalsForPeer0Org1
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -149,7 +149,7 @@ chaincodeEscreverMensagem() {
 
     sleep 1
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -163,7 +163,7 @@ chaincodeEscreverMensagem() {
 
     setGlobalsForPeer0Org2
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
@@ -176,7 +176,7 @@ chaincodeEscreverMensagem() {
 
     sleep 1
 
-    /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+    /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
     --ordererTLSHostnameOverride orderer.example.com \
     --tls $CORE_PEER_TLS_ENABLED \
     --cafile $ORDERER_CA \
