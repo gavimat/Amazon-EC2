@@ -51,7 +51,7 @@ chaincodeEscreverMensagem() {
   
 	setGlobalsForPeer0Org1
 
-    /root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryTodasMensagens"]}'
+    /home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryTodasMensagens"]}'
         
 
 }
