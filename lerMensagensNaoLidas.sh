@@ -57,9 +57,9 @@ lerMensagensNaoLidas() {
 
 		setGlobalsForPeer0Org1
 
-        /root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensNaoLidas", "ORG2"]}'
+        /home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensNaoLidas", "ORG2"]}'
         
-        /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+        /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
@@ -73,9 +73,9 @@ lerMensagensNaoLidas() {
 
 		setGlobalsForPeer0Org2
 
-        /root/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensNaoLidas", "ORG1"]}'
+        /home/ubuntu/fabric-samples/bin/peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryMensagensNaoLidas", "ORG1"]}'
 
-        /root/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
+        /home/ubuntu/fabric-samples/bin/peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA \
