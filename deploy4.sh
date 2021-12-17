@@ -52,22 +52,13 @@ CC_SRC_PATH="./artifacts/src/github.com/fabcar/go"
 CC_NAME="fabcar"
 
 
-installChaincode() {
+queryInstalled() {
     setGlobalsForPeer0Org1
-    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer0.org1 ===================== "
-
-    setGlobalsForPeer1Org1
-    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer1.org1 ===================== "
-
-    setGlobalsForPeer0Org2
-    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer0.org2 ===================== "
-
-    setGlobalsForPeer1Org2
-    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer1.org2 ===================== "
+    /home/ubuntu/fabric-samples/bin/peer lifecycle chaincode queryinstalled >&log.txt
+    cat log.txt
+    PACKAGE_ID=$(sed -n "/${CC_NAME}_${VERSION}/{s/^Package ID: //; s/, Label:.*$//; p;}" log.txt)
+    echo PackageID is ${PACKAGE_ID}
+    echo "===================== Query installed successful on peer0.org1 on channel ===================== "
 }
 
-installChaincode
+queryInstalled
